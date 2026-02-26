@@ -1,0 +1,934 @@
+{
+  "North America": {
+    "Canada": [
+      {
+        "id": 1,
+        "name": "Canada West"
+      },
+      {
+        "id": 2,
+        "name": "Canada Prairies"
+      },
+      {
+        "id": 3,
+        "name": "Canada Ontario-Quebec"
+      },
+      {
+        "id": 4,
+        "name": "Canada Atlantic"
+      }
+    ],
+    "USA": [
+      {
+        "id": 5,
+        "name": "USA Pacific"
+      },
+      {
+        "id": 6,
+        "name": "USA Mountain"
+      },
+      {
+        "id": 7,
+        "name": "USA Midwest"
+      },
+      {
+        "id": 8,
+        "name": "USA South"
+      },
+      {
+        "id": 9,
+        "name": "USA Northeast"
+      },
+      {
+        "id": 10,
+        "name": "USA Southeast"
+      }
+    ],
+    "Mexico": [
+      {
+        "id": 11,
+        "name": "Mexico North"
+      },
+      {
+        "id": 12,
+        "name": "Mexico South"
+      }
+    ],
+    "Guatemala": [
+      {
+        "id": 13,
+        "name": "Guatemala"
+      }
+    ],
+    "Honduras": [
+      {
+        "id": 14,
+        "name": "Honduras"
+      }
+    ],
+    "El Salvador": [
+      {
+        "id": 15,
+        "name": "El Salvador"
+      }
+    ],
+    "Nicaragua": [
+      {
+        "id": 16,
+        "name": "Nicaragua"
+      }
+    ],
+    "Costa Rica": [
+      {
+        "id": 17,
+        "name": "Costa Rica"
+      }
+    ],
+    "Panama": [
+      {
+        "id": 18,
+        "name": "Panama"
+      }
+    ],
+    "Cuba": [
+      {
+        "id": 19,
+        "name": "Cuba"
+      }
+    ],
+    "Hispaniola": [
+      {
+        "id": 20,
+        "name": "Hispaniola"
+      }
+    ],
+    "Lesser Antilles": [
+      {
+        "id": 21,
+        "name": "Lesser Antilles"
+      }
+    ]
+  },
+  "South America": {
+    "Brazil": [
+      {
+        "id": 22,
+        "name": "Brazil North"
+      },
+      {
+        "id": 23,
+        "name": "Brazil Northeast"
+      },
+      {
+        "id": 24,
+        "name": "Brazil Central"
+      },
+      {
+        "id": 25,
+        "name": "Brazil South"
+      }
+    ],
+    "Argentina": [
+      {
+        "id": 26,
+        "name": "Argentina North"
+      },
+      {
+        "id": 27,
+        "name": "Argentina Patagonia"
+      }
+    ],
+    "Colombia": [
+      {
+        "id": 28,
+        "name": "Colombia"
+      }
+    ],
+    "Venezuela": [
+      {
+        "id": 29,
+        "name": "Venezuela"
+      }
+    ],
+    "Peru": [
+      {
+        "id": 30,
+        "name": "Peru"
+      }
+    ],
+    "Chile": [
+      {
+        "id": 31,
+        "name": "Chile"
+      }
+    ],
+    "Bolivia": [
+      {
+        "id": 32,
+        "name": "Bolivia"
+      }
+    ],
+    "Paraguay": [
+      {
+        "id": 33,
+        "name": "Paraguay"
+      }
+    ],
+    "Uruguay": [
+      {
+        "id": 34,
+        "name": "Uruguay"
+      }
+    ],
+    "Ecuador": [
+      {
+        "id": 35,
+        "name": "Ecuador"
+      }
+    ],
+    "Guyana": [
+      {
+        "id": 36,
+        "name": "Guyana"
+      }
+    ],
+    "Suriname": [
+      {
+        "id": 37,
+        "name": "Suriname"
+      }
+    ]
+  },
+  "Europe": {
+    "France": [
+      {
+        "id": 38,
+        "name": "France North"
+      },
+      {
+        "id": 39,
+        "name": "France South"
+      }
+    ],
+    "Germany": [
+      {
+        "id": 40,
+        "name": "Germany West"
+      },
+      {
+        "id": 41,
+        "name": "Germany East"
+      }
+    ],
+    "Italy": [
+      {
+        "id": 42,
+        "name": "Italy North"
+      },
+      {
+        "id": 43,
+        "name": "Italy South"
+      }
+    ],
+    "Spain": [
+      {
+        "id": 44,
+        "name": "Spain Mainland"
+      },
+      {
+        "id": 45,
+        "name": "Spain Catalonia-Basque"
+      }
+    ],
+    "Ukraine": [
+      {
+        "id": 46,
+        "name": "Ukraine West"
+      },
+      {
+        "id": 47,
+        "name": "Ukraine East"
+      }
+    ],
+    "UK": [
+      {
+        "id": 48,
+        "name": "UK Great Britain"
+      },
+      {
+        "id": 49,
+        "name": "UK Northern Ireland"
+      }
+    ],
+    "Russia": [
+      {
+        "id": 50,
+        "name": "European Russia West"
+      },
+      {
+        "id": 51,
+        "name": "European Russia East"
+      }
+    ],
+    "Poland": [
+      {
+        "id": 52,
+        "name": "Poland"
+      }
+    ],
+    "Netherlands": [
+      {
+        "id": 53,
+        "name": "Netherlands"
+      }
+    ],
+    "Belgium": [
+      {
+        "id": 54,
+        "name": "Belgium"
+      }
+    ],
+    "Sweden": [
+      {
+        "id": 55,
+        "name": "Sweden"
+      }
+    ],
+    "Norway": [
+      {
+        "id": 56,
+        "name": "Norway"
+      }
+    ],
+    "Finland": [
+      {
+        "id": 57,
+        "name": "Finland"
+      }
+    ],
+    "Denmark": [
+      {
+        "id": 58,
+        "name": "Denmark"
+      }
+    ],
+    "Greece": [
+      {
+        "id": 59,
+        "name": "Greece"
+      }
+    ],
+    "Czechia": [
+      {
+        "id": 60,
+        "name": "Czechia"
+      }
+    ],
+    "Hungary": [
+      {
+        "id": 61,
+        "name": "Hungary"
+      }
+    ],
+    "Romania": [
+      {
+        "id": 62,
+        "name": "Romania"
+      }
+    ],
+    "Bulgaria": [
+      {
+        "id": 63,
+        "name": "Bulgaria"
+      }
+    ],
+    "Austria": [
+      {
+        "id": 64,
+        "name": "Austria"
+      }
+    ],
+    "Switzerland": [
+      {
+        "id": 65,
+        "name": "Switzerland"
+      }
+    ],
+    "Portugal": [
+      {
+        "id": 66,
+        "name": "Portugal"
+      }
+    ],
+    "Ireland": [
+      {
+        "id": 67,
+        "name": "Ireland"
+      }
+    ],
+    "Belarus": [
+      {
+        "id": 68,
+        "name": "Belarus"
+      }
+    ],
+    "Slovakia": [
+      {
+        "id": 69,
+        "name": "Slovakia"
+      }
+    ],
+    "Croatia": [
+      {
+        "id": 70,
+        "name": "Croatia"
+      }
+    ],
+    "Serbia": [
+      {
+        "id": 71,
+        "name": "Serbia"
+      }
+    ],
+    "Bosnia and Herzegovina": [
+      {
+        "id": 72,
+        "name": "Bosnia and Herzegovina"
+      }
+    ],
+    "Albania": [
+      {
+        "id": 73,
+        "name": "Albania"
+      }
+    ],
+    "North Macedonia": [
+      {
+        "id": 74,
+        "name": "North Macedonia"
+      }
+    ],
+    "Estonia": [
+      {
+        "id": 75,
+        "name": "Estonia"
+      }
+    ],
+    "Latvia": [
+      {
+        "id": 76,
+        "name": "Latvia"
+      }
+    ],
+    "Lithuania": [
+      {
+        "id": 77,
+        "name": "Lithuania"
+      }
+    ]
+  },
+  "Africa": {
+    "Algeria": [
+      {
+        "id": 78,
+        "name": "Algeria North"
+      },
+      {
+        "id": 79,
+        "name": "Algeria South"
+      }
+    ],
+    "Egypt": [
+      {
+        "id": 80,
+        "name": "Egypt Nile"
+      },
+      {
+        "id": 81,
+        "name": "Egypt Desert"
+      }
+    ],
+    "Nigeria": [
+      {
+        "id": 82,
+        "name": "Nigeria North"
+      },
+      {
+        "id": 83,
+        "name": "Nigeria South"
+      }
+    ],
+    "DR Congo": [
+      {
+        "id": 84,
+        "name": "DR Congo West"
+      },
+      {
+        "id": 85,
+        "name": "DR Congo East"
+      }
+    ],
+    "South Africa": [
+      {
+        "id": 86,
+        "name": "South Africa West"
+      },
+      {
+        "id": 87,
+        "name": "South Africa East"
+      }
+    ],
+    "Ethiopia": [
+      {
+        "id": 88,
+        "name": "Ethiopia North"
+      },
+      {
+        "id": 89,
+        "name": "Ethiopia South"
+      }
+    ],
+    "Sudan": [
+      {
+        "id": 90,
+        "name": "Sudan North"
+      },
+      {
+        "id": 91,
+        "name": "Sudan South"
+      }
+    ],
+    "Morocco": [
+      {
+        "id": 92,
+        "name": "Morocco"
+      }
+    ],
+    "Tunisia": [
+      {
+        "id": 93,
+        "name": "Tunisia"
+      }
+    ],
+    "Libya": [
+      {
+        "id": 94,
+        "name": "Libya"
+      }
+    ],
+    "Ghana": [
+      {
+        "id": 95,
+        "name": "Ghana"
+      }
+    ],
+    "Senegal": [
+      {
+        "id": 96,
+        "name": "Senegal"
+      }
+    ],
+    "Mali": [
+      {
+        "id": 97,
+        "name": "Mali"
+      }
+    ],
+    "Ivory Coast": [
+      {
+        "id": 98,
+        "name": "Ivory Coast"
+      }
+    ],
+    "Kenya": [
+      {
+        "id": 99,
+        "name": "Kenya"
+      }
+    ],
+    "Tanzania": [
+      {
+        "id": 100,
+        "name": "Tanzania"
+      }
+    ],
+    "Uganda": [
+      {
+        "id": 101,
+        "name": "Uganda"
+      }
+    ],
+    "Angola": [
+      {
+        "id": 102,
+        "name": "Angola"
+      }
+    ],
+    "Zambia": [
+      {
+        "id": 103,
+        "name": "Zambia"
+      }
+    ],
+    "Zimbabwe": [
+      {
+        "id": 104,
+        "name": "Zimbabwe"
+      }
+    ],
+    "Mozambique": [
+      {
+        "id": 105,
+        "name": "Mozambique"
+      }
+    ],
+    "Madagascar": [
+      {
+        "id": 106,
+        "name": "Madagascar"
+      }
+    ],
+    "Namibia": [
+      {
+        "id": 107,
+        "name": "Namibia"
+      }
+    ],
+    "Botswana": [
+      {
+        "id": 108,
+        "name": "Botswana"
+      }
+    ]
+  },
+  "Asia": {
+    "Russia": [
+      {
+        "id": 109,
+        "name": "Russia West"
+      },
+      {
+        "id": 110,
+        "name": "Russia Caucasus"
+      },
+      {
+        "id": 111,
+        "name": "Russia Urals"
+      },
+      {
+        "id": 112,
+        "name": "Russia West Siberia"
+      },
+      {
+        "id": 113,
+        "name": "Russia East Siberia"
+      },
+      {
+        "id": 114,
+        "name": "Russia Far East"
+      }
+    ],
+    "China": [
+      {
+        "id": 115,
+        "name": "China North"
+      },
+      {
+        "id": 116,
+        "name": "China South"
+      },
+      {
+        "id": 117,
+        "name": "China West"
+      },
+      {
+        "id": 118,
+        "name": "China Central"
+      },
+      {
+        "id": 119,
+        "name": "China Coast"
+      }
+    ],
+    "India": [
+      {
+        "id": 120,
+        "name": "India North"
+      },
+      {
+        "id": 121,
+        "name": "India South"
+      },
+      {
+        "id": 122,
+        "name": "India East"
+      }
+    ],
+    "Kazakhstan": [
+      {
+        "id": 123,
+        "name": "Kazakhstan West"
+      },
+      {
+        "id": 124,
+        "name": "Kazakhstan East"
+      }
+    ],
+    "Saudi Arabia": [
+      {
+        "id": 125,
+        "name": "Saudi Arabia West"
+      },
+      {
+        "id": 126,
+        "name": "Saudi Arabia East"
+      }
+    ],
+    "Iran": [
+      {
+        "id": 127,
+        "name": "Iran West"
+      },
+      {
+        "id": 128,
+        "name": "Iran East"
+      }
+    ],
+    "Turkey": [
+      {
+        "id": 129,
+        "name": "Turkey West"
+      },
+      {
+        "id": 130,
+        "name": "Turkey East"
+      }
+    ],
+    "Japan": [
+      {
+        "id": 131,
+        "name": "Japan Honshu"
+      },
+      {
+        "id": 132,
+        "name": "Japan North"
+      }
+    ],
+    "Indonesia": [
+      {
+        "id": 133,
+        "name": "Indonesia West"
+      },
+      {
+        "id": 134,
+        "name": "Indonesia Central"
+      },
+      {
+        "id": 135,
+        "name": "Indonesia East"
+      }
+    ],
+    "Pakistan": [
+      {
+        "id": 136,
+        "name": "Pakistan"
+      }
+    ],
+    "Thailand": [
+      {
+        "id": 137,
+        "name": "Thailand"
+      }
+    ],
+    "Vietnam": [
+      {
+        "id": 138,
+        "name": "Vietnam"
+      }
+    ],
+    "Philippines": [
+      {
+        "id": 139,
+        "name": "Philippines"
+      }
+    ],
+    "Malaysia": [
+      {
+        "id": 140,
+        "name": "Malaysia"
+      }
+    ],
+    "Bangladesh": [
+      {
+        "id": 141,
+        "name": "Bangladesh"
+      }
+    ],
+    "Nepal": [
+      {
+        "id": 142,
+        "name": "Nepal"
+      }
+    ],
+    "Sri Lanka": [
+      {
+        "id": 143,
+        "name": "Sri Lanka"
+      }
+    ],
+    "Myanmar": [
+      {
+        "id": 144,
+        "name": "Myanmar"
+      }
+    ],
+    "Cambodia": [
+      {
+        "id": 145,
+        "name": "Cambodia"
+      }
+    ],
+    "Laos": [
+      {
+        "id": 146,
+        "name": "Laos"
+      }
+    ],
+    "South Korea": [
+      {
+        "id": 147,
+        "name": "South Korea"
+      }
+    ],
+    "North Korea": [
+      {
+        "id": 148,
+        "name": "North Korea"
+      }
+    ],
+    "Mongolia": [
+      {
+        "id": 149,
+        "name": "Mongolia"
+      }
+    ],
+    "Afghanistan": [
+      {
+        "id": 150,
+        "name": "Afghanistan"
+      }
+    ],
+    "Iraq": [
+      {
+        "id": 151,
+        "name": "Iraq"
+      }
+    ],
+    "Syria": [
+      {
+        "id": 152,
+        "name": "Syria"
+      }
+    ],
+    "Jordan": [
+      {
+        "id": 153,
+        "name": "Jordan"
+      }
+    ],
+    "Israel": [
+      {
+        "id": 154,
+        "name": "Israel"
+      }
+    ],
+    "UAE": [
+      {
+        "id": 155,
+        "name": "UAE"
+      }
+    ],
+    "Oman": [
+      {
+        "id": 156,
+        "name": "Oman"
+      }
+    ],
+    "Yemen": [
+      {
+        "id": 157,
+        "name": "Yemen"
+      }
+    ],
+    "Qatar": [
+      {
+        "id": 158,
+        "name": "Qatar"
+      }
+    ],
+    "Kuwait": [
+      {
+        "id": 159,
+        "name": "Kuwait"
+      }
+    ],
+    "Armenia": [
+      {
+        "id": 160,
+        "name": "Armenia"
+      }
+    ],
+    "Georgia": [
+      {
+        "id": 161,
+        "name": "Georgia"
+      }
+    ],
+    "Azerbaijan": [
+      {
+        "id": 162,
+        "name": "Azerbaijan"
+      }
+    ]
+  },
+  "Oceania": {
+    "Australia": [
+      {
+        "id": 163,
+        "name": "Australia West"
+      },
+      {
+        "id": 164,
+        "name": "Australia East"
+      },
+      {
+        "id": 165,
+        "name": "Australia North"
+      }
+    ],
+    "New Zealand": [
+      {
+        "id": 166,
+        "name": "New Zealand"
+      }
+    ],
+    "Papua New Guinea": [
+      {
+        "id": 167,
+        "name": "Papua New Guinea"
+      }
+    ],
+    "Pacific Islands West": [
+      {
+        "id": 168,
+        "name": "Pacific Islands West"
+      }
+    ],
+    "Pacific Islands East": [
+      {
+        "id": 169,
+        "name": "Pacific Islands East"
+      }
+    ]
+  }
+}
