@@ -112,6 +112,10 @@ class Player:
                         print(f"{new_unit.name} trained.")
                     print("Training complete.")
 
+            # Delete unit from division if it loses a battle
+            def delete_unit(self, unit):
+                # finds the unit in the division's units dictionary and deletes it 
+                self.units[str(unit.level)][self.units[str(unit.level)].index(unit)]
 
             # UNIT CLASS AND METHODS
             class Unit:
@@ -134,7 +138,7 @@ class Player:
                         
                     else: return
                 
-                # function to get the unit number as string once they get trained
+                # function to get the unit number(name) as string once they get trained
                 def get_unit_number(self) -> str:
                     # gets the number of units in the current division
                     n_units = sum([len(value) for value in self.division.units.values()])

@@ -1,11 +1,11 @@
 import json
-
+import time
 
 
 
 class Continent:
     def __init__(self, name: str) -> None:
-        self.countries: set[Continent.Country] = set() # set of countries in the continent
+        self.countries: list = [] # list of countries in the continent
         self.name: str = name # name of the continent
 
     def __repr__(self) -> str:
@@ -16,13 +16,13 @@ class Continent:
     # Initialize the country and assigns it to the continent
     def new_country(self, name):
         country = self.Country(self, name)
-        self.countries.add(country)
+        self.countries.append(country)
         return country
     
     
     class Country:
         def __init__(self, continent, name) -> None:
-            self.regions: set[Continent.Country.Region] = set() # set of regions in the country
+            self.regions: list[Continent.Country.Region] = [] # list of regions in the country
             self.name: str = name # name of the country
             self.continent: Continent = continent # Continent parent of the country
         
@@ -34,18 +34,19 @@ class Continent:
         # Initialize a region and assigns it to the country
         def new_region(self, name, id):
             region = self.Region(name, self, id)
-            self.regions.add(region)
+            self.regions.append(region)
         
         
         class Region:
             def __init__(self, name: str, country, id: int) -> None:
                 self.name: str = name # name of the region
                 self.id: int = id # id of the region
-                self.units: dict = {"1": [], "2": [], "3": [], "4": [], "5": []} # dictionary with lists of units in the region
+                self.units: dict[str, list] = {"1": [], "2": [], "3": [], "4": [], "5": []} # dictionary with lists of units in the region
                 self.country: Continent.Country = country # parent country
             
             def __repr__(self) -> str:
                 return self.name
+            
             
 
 def init_territory():
@@ -68,24 +69,28 @@ def init_territory():
                 new_country.new_region(region["name"], region["id"])
     
     print("Territory initialization complete")
+    time.sleep(1)
     return continent_list
 
 
-def check_adjacency():
+def check_adjacency(region1: Continent.Country.Region, region2: Continent.Country.Region) -> bool:
+    # extracts adjacency data from json file
     with open("./data/risk_realistic_world_adjacency.json", "r") as f:
         data = json.load(f)
+    if region1.id in data[region2.id]:
+        return True
+    else:
+        return False
 
     
 
 
 
 
-if __name__ == "__main__":
-    # continent_list = init_territory()
-    # for continent in continent_list:
-    #     print(continent)
-    with open("./data/risk_realistic_world_adjacency.json") as f:
-        data = json.load(f)
-    for id in data.keys():
-        print(id)
-            
+# if __name__ == "__main__":
+#     continent_list = init_territory()
+#     region: Continent.Country.Region = continent_list[0].countries[0].regions[0]
+#     total = 0
+#     for key in region.units.keys():
+#         total += len(region.units[key])
+#     print(total)
