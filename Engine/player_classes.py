@@ -135,8 +135,10 @@ class Player:
                         self.bonus += 1
                         self.level += 1
                         self.division.units[str(self.level)].append(self)
-                        
-                    else: return
+                        print(f"{self.name} leveled up! It's now level {self.level}.")
+                    else:
+                        print(f"{self.name} is already max level.")
+                        return
                 
                 # function to get the unit number(name) as string once they get trained
                 def get_unit_number(self) -> str:

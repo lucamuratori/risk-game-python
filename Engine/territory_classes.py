@@ -1,5 +1,6 @@
 import json
 import time
+from player_classes import Player
 
 
 
@@ -38,16 +39,17 @@ class Continent:
         
         
         class Region:
-            def __init__(self, name: str, country, id: int) -> None:
+            def __init__(self, name: str, country, id: int, player: Player | None = None) -> None:
                 self.name: str = name # name of the region
                 self.id: int = id # id of the region
                 self.units: dict[str, list] = {"1": [], "2": [], "3": [], "4": [], "5": []} # dictionary with lists of units in the region
                 self.country: Continent.Country = country # parent country
+                self.player = player
             
             def __repr__(self) -> str:
                 return self.name
             
-            
+         
 
 def init_territory():
     continent_list = []
