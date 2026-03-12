@@ -16,31 +16,96 @@ def init_players_territory():
 def dice_roll(unit: Player.Army.Division.Unit) -> int:
     return random.randint(1, 10) + unit.bonus
 
-
+# logic for the movement and battle between two players
 def war(from_region: Continent.Country.Region, to_region: Continent.Country.Region):
     if check_adjacency(from_region, to_region):
         # if the owner of the region is the same or the destination region is empty move the troops
         if check_region_owner(from_region) == check_region_owner(to_region) or check_region_units(to_region) == 0:
+
             number_units = int(input(f"How many troops do you want to move from {from_region.name} to {to_region.name}? "))
-            n = 1
-            while n <= number_units:
-                move(from_region, to_region)
-                n += 1
+            units_to_move_attack = []
+
+            for _ in range(number_units):
+                units_to_move_attack.append(choose_unit_to_move(from_region))
+
+            move(from_region, to_region, units_to_move_attack)
             return True
         
+        # if there needs to be a battle
         elif check_region_owner(from_region) != check_region_owner(to_region) and check_region_units(to_region) != 0:
-                player1_units = pick_units(from_region)
-                player2_units = pick_units(to_region)
+                player1_number_units = int(input(f"How many troops do you want to use for the attack on {to_region.name}"))
+                player1_units = []
+                for _ in range(player1_number_units):
+                    player1_units.append(choose_unit_to_move(from_region))
+                
+                player2_number_units = int(input(f"How many troops do you want to use for the defense of {to_region.name}"))
+                player2_units = []
+                for n in range(player2_number_units):
+                    player2_units.append(choose_unit_to_move(to_region))
+
                 while len(player1_units) != 0 and len(player2_units) != 0:
+                    unit = battle(player1_units[0], player2_units[0], from_region, to_region)
+                    if unit == player1_units[0]:
+                        player2_units.pop(0)
+                    else:
+                        player1_units.pop(0)
                     return
 
+# makes the player choose a unit to move and returns it
+def choose_unit_to_move(region) -> Player.Army.Division.Unit:
+    # loop for the choice of unit to move
+    while True:
+        units = []
+        i = 0
 
+        # START OF THE UNIT CHOOSING 
+        # creates a list with all the units in the starting region and prints it
+        for key in region.units.keys():
+
+            # gets units for each level
+            for unit in region.units[key]:
+
+                # appends the unit number, name and level
+                units.append([i, unit.name, unit.level])
+                i += 1
+        print(units)
+
+        # ask for the ID of the unit from the print statement
+        input_unit_number = int(input(f"pick the ID number of the unit you want to move to another region: "))
+        # check that the ID is present in the list of units
+        if input_unit_number < len(units) and input_unit_number >= 0:
+
+            # find the unit with the matching number in the list
+            for unit in units:
+
+                # match the unit number with the input number
+                if unit[0] == input_unit_number:
+
+                    unit_list_level: list = region.units[str(unit[2])]
+                    for full_unit in unit_list_level:
+
+                        # check if the name of the unit matches one of the units in the region
+                        if unit[1] == full_unit.name:
+                            # return unit
+                            return full_unit
+
+                        else:
+                            # if it's not the same unit name then go to the next unit
+                            continue
+        
+        else:
+            # if input ID is not in the ID limits, retry
+            print("The ID number you chose has no match in the list of units")
+            continue
+            # END OF THE UNIT CHOOSING
+
+    
 # decide the outcome of the battle
 def battle(unit1: Player.Army.Division.Unit, 
            unit2: Player.Army.Division.Unit, 
            region1: Continent.Country.Region, 
            region2: Continent.Country.Region
-           ) -> bool:
+           ):
 
     # Region1 is attacker, region2 is defender
     unit1_roll = dice_roll(unit1) # attacker roll
@@ -53,84 +118,27 @@ def battle(unit1: Player.Army.Division.Unit,
         # level up and remove losing unit
         unit1.level_up()
         remove_unit_from_region(unit2, region2)
-        # check if the region becomes empty
-        if check_region_units(region2) == 0:
 
-            # ask to move units into the empty region
-            move(from_region=region1, to_region=region2)
-        return True
+        return unit1
 
     # in case of tie the defender wins
     else:
         # level up and remove losing unit
         unit2.level_up()
         remove_unit_from_region(unit1, region1)
-        # check if the region becomes empty
-        if check_region_units(region1) == 0:
-            # move units into the empty region
-            move(from_region=region2, to_region=region1)
-        return True
+        
+        return unit2
 
 # function to move units from one region to the other 
 def move(from_region: Continent.Country.Region, 
-                to_region: Continent.Country.Region):
+        to_region: Continent.Country.Region,
+        units_to_send: list[Player.Army.Division.Unit]):
     
-    # loop for the choice of unit to move
-    while True:
-        units = []
-        i = 0
-        success = False
-
-        # creates a list with all the units in the starting region and prints it
-        for key in from_region.units.keys():
-
-            # gets units for each level
-            for unit in from_region.units[key]:
-
-                # appends the unit number, name and level
-                units.append([i, unit.name, unit.level])
-                i += 1
-        print(units)
-
-        # ask for the ID of the unit from the print statement
-        input_unit_number = int(input(f"pick the ID number of the unit you want to move to {to_region.name}: "))
-        # check that the ID is present in the list of units
-        if input_unit_number < len(units) and input_unit_number >= 0:
-
-            # find the unit with the matching number in the list
-            for unit in units:
-
-                # match the unit number with the input number
-                if unit[0] == input_unit_number:
-
-                    unit_list_level: list = from_region.units[str(unit[2])]
-                    for full_unit in unit_list_level:
-
-                        # check if the name of the unit matches one of the units in the region
-                        if unit[1] == full_unit.name:
-
-                            # remove unit from the starting region
-                            remove_unit_from_region(full_unit, from_region)
-
-                            # add the unit to the final region
-                            add_unit_to_region(full_unit, to_region)
-
-                            success = True
-                            break
-                        else:
-                            continue
-                
-                if success:
-                    break
-                else:
-                    continue
-            
-            if success:
-                break
-            else:
-                print("The ID number you chose has no match in the list of units")
-                continue
-
+    # loop throught the chosen units and move them to the new region   
+    for unit in units_to_send:
+        remove_unit_from_region(unit, from_region)
+        add_unit_to_region(unit, to_region)
+        
 
 # returns the number of units in the region
 def check_region_units(region: Continent.Country.Region) -> int:
@@ -187,57 +195,59 @@ def add_unit_to_region(unit: Player.Army.Division.Unit, region: Continent.Countr
         print(f"{region.name} is now owned by {region.player.name}")
 
 
-# pick units that will fight
-def pick_units(region: Continent.Country.Region) -> list:
-    units: list = []
-    units_chosen: list = []
-    i: int = 0
-    success = False
+# pick units that will fight (OBSOLETE)
+# def pick_units(region: Continent.Country.Region) -> list:
+#     units: list = []
+#     units_chosen: list = []
+#     i: int = 0
 
-    # creates the list of units available in the region
-    for key in region.units.keys():
+#     # creates the list of units available in the region
+#     for key in region.units.keys():
 
-        for unit in region.units[key]:
+#         for unit in region.units[key]:
 
-            # append unit to the units list with [ID, unit]
-            units.append([i, unit])
-            i += 1
+#             # append unit to the units list with [ID, unit]
+#             units.append([i, unit])
+#             i += 1
 
-    while True:
-        if region.player is not None:
-            input_number = int(input(f"{region.player.name} choose the number of units you want to use in the battle. (maximum {len(units)}): "))
+#     while True:
+#         if region.player is not None:
+#             input_number = int(input(f"{region.player.name} choose the number of units you want to use in the battle. (maximum {len(units)}): "))
         
-            # check that the number is between the minimum and maximum allowed
-            if input_number > len(units) or input_number < 0:
-                print("The number you chose is outside the bounds of the units IDs.")
-                continue
+#             # check that the number is between the minimum and maximum allowed
+#             if input_number > len(units) or input_number < 0:
+#                 print("The number you chose is outside the bounds of the units IDs.")
+#                 continue
             
-            # if the number of units chosen is 0, exit combat
-            if input_number == 0:
-                print("You chose 0 units, exiting combat.")
-                break
+#             # if the number of units chosen is 0, exit combat
+#             if input_number == 0:
+#                 print("You chose 0 units, exiting combat.")
+#                 return units_chosen
             
-            # loop through the units for a "chosen n of units" times
-            for n in range(input_number):
+#             # loop through the units for a "chosen n of units" times
+#             for n in range(input_number):
                 
-                # prints the list of units available in the region
-                for unit in units:
-                    print(unit[0], unit[1].name, unit[1].level)
+#                 # prints the list of units available in the region
+#                 for unit in units:
+#                     print(unit[0], unit[1].name, unit[1].level)
 
-                # asks for the id (unit[0]) of the unit
-                unit_input = int(input("Choose the id number of the unit as seen in the list: "))
+#                 # asks for the id (unit[0]) of the unit
+#                 unit_input = int(input("Choose the id number of the unit as seen in the list: "))
 
-                # make sure the input number is between the minimum id number and the maximum length of units
-                if unit_input < len(units) and unit_input >= units[0][0]:
+#                 # make sure the input number is between the minimum id number and the maximum length of units
+#                 if unit_input < len(units) and unit_input >= units[0][0]:
                     
-                    # loop through the units to find the one with the input id
-                    for unit in units:
-                        if unit[0] == unit_input:
-                            units.remove(unit)
-                            units_chosen.append(unit)
-                            break
-            break
-    return units_chosen
+#                     # loop through the units to find the one with the input id
+#                     for unit in units:
+#                         if unit[0] == unit_input:
+#                             units.remove(unit)
+#                             units_chosen.append(unit)
+#                             break
+#             break
+#         else:
+#             print("This region is not owned by a player.")
+#             break
+#     return units_chosen
 
 
 # creates a list of all region under a player control
