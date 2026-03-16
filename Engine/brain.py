@@ -38,11 +38,9 @@ def war(from_region: Continent.Country.Region, to_region: Continent.Country.Regi
                 for _ in range(player1_number_units):
                     player1_units.append(choose_unit_to_move(from_region))
                 
-                player2_number_units = int(input(f"How many troops do you want to use for the defense of {to_region.name}"))
-                player2_units = []
-                for n in range(player2_number_units):
-                    player2_units.append(choose_unit_to_move(to_region))
-
+                player2_units = choose_defense(to_region)
+                
+                # battle cycle until one of the two regions has no more units chosen
                 while len(player1_units) != 0 and len(player2_units) != 0:
                     unit = battle(player1_units[0], player2_units[0], from_region, to_region)
                     if unit == player1_units[0]:
@@ -51,23 +49,32 @@ def war(from_region: Continent.Country.Region, to_region: Continent.Country.Regi
                         player1_units.pop(0)
                     return
 
+# create the unit list for the defensive region
+def choose_defense(region) -> list:
+    defense_units: list = []
+    for i in range(1, 6):
+        unit_list_level: list = region.units[str(i)]
+        for unit in unit_list_level:
+            defense_units.append(unit)
+    return defense_units
+
+
 # makes the player choose a unit to move and returns it
 def choose_unit_to_move(region) -> Player.Army.Division.Unit:
     # loop for the choice of unit to move
     while True:
         units = []
-        i = 0
 
         # START OF THE UNIT CHOOSING 
         # creates a list with all the units in the starting region and prints it
         for key in region.units.keys():
 
             # gets units for each level
-            for unit in region.units[key]:
+            for i, unit in enumerate(region.units[key]):
 
                 # appends the unit number, name and level
                 units.append([i, unit.name, unit.level])
-                i += 1
+
         print(units)
 
         # ask for the ID of the unit from the print statement
