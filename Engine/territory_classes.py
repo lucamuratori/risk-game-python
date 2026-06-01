@@ -1,7 +1,7 @@
 import json
 import time
 from pydantic import BaseModel
-from player_classes import Player
+from player_classes import Player, Unit
 
 
 class Continent(BaseModel):

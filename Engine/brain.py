@@ -1,5 +1,6 @@
 from player_classes import Player, Unit
 from territory_classes import Continent, Territory
+from collections import deque
 import json
 import random
 import time
@@ -51,16 +52,52 @@ def check_adjacency(region1: Territory, region2: Territory) -> bool:
         return False
 
 
-def battle(unit1: Unit, unit2: Unit):
+def battle(unit1: Unit, unit2: Unit) -> Unit:
     # unit1 = attacker, unit2 = defender
     roll1 = random.randint(1, 10) + unit1.level
     roll2 = random.randint(1, 10) + unit2.level
     if roll1 > roll2:
         return unit1
-    elif roll2 >= roll1:
+    else:
         return unit2
 
+
+def find_shortest_path(start_terr: Territory, dest_terr: Territory, adjacency_graph: dict):
+    queue = deque([(start_terr.id, [start_terr.id])])
+    visited = set()
+
+    while queue:
+        current_terr, path = queue.popleft()
+
+        # Check if this is the destination
+        if current_terr == dest_terr:
+            return path
+        
+        if current_terr not in visited:
+            visited.add(current_terr)
+
+            # Check adjacent territories to the current one
+            if current_terr in adjacency_graph:
+                for neighbor in adjacency_graph[current_terr]:
+                    if neighbor not in visited:
+                        queue.append((neighbor, path + [neighbor]))
     
-def move(unit: Unit, start_terr: Territory, end_terr: Territory):
-    if check_adjacency(start_terr, end_terr):
-        pass
+    return None # If no route has been found
+
+
+def move(units: list[Unit], start_terr: Territory, dest_terr: Territory, continent_list: list[Continent]):
+    route = find_shortest_path(start_terr, dest_terr, adjacency)
+    if route is not None:
+        for unit in units:
+            for i, u in enumerate(start_terr.units):
+                if u._id == unit._id:
+                    unit_m = start_terr.units.pop(i)
+                    dest_terr.units.append(unit_m)
+                    return True, "Move complete."
+    else:
+        return False, "No path available to move the units."
+
+
+
+
+# Utility functions end ------
